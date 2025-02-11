@@ -1,0 +1,126 @@
+/* styles.css */
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    block-size: 100vh;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+    background-image: linear-gradient(rgba(29, 29, 29, 0.7), rgba(29, 29, 29, 0.6)), url("../../home/images/fundoCadastro.jpg");
+}
+
+.container {
+    padding: 20px;
+}
+
+.card {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    max-inline-size: 450px;
+    inline-size: 100%;
+    animation: slideIn 1s ease-in-out;
+}
+
+.logo {
+    max-inline-size: 100px;
+    margin-block-end: 20px;
+    animation: bounce 2s infinite;
+}
+
+.title {
+    font-size: 2.2rem;
+    margin-block-end: 10px;
+    color: #fff;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.message {
+    font-size: x-large;
+    margin-block-end: 20px;
+    line-height: 1.6;
+}
+
+.progress-bar {
+    inline-size: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    overflow: hidden;
+    block-size: 10px;
+    margin: 20px 0;
+}
+
+.progress {
+    block-size: 100%;
+    inline-size: 70%;
+    background: #ffa500;
+    animation: progressAnimation 3s infinite alternate;
+}
+
+.footer-message {
+    font-size: larger;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 10px 0 20px;
+}
+
+.button {
+    background: #ffa500;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: xx-large;
+    transition: transform 0.2s ease, background 0.3s ease;
+    box-shadow: 0px 5px 15px rgba(255, 165, 0, 0.4);
+}
+
+.button:hover {
+    background: #ff6347;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes progressAnimation {
+    from {
+        inline-size: 0;
+    }
+    to {
+        inline-size: 100%;
+    }
+}
