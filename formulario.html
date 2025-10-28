@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HenriqueTech - Formulário</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+        .nav-link-active { color: #3b82f6; font-weight: 600; }
+        .dark .nav-link-active { color: #60a5fa; }
+        .mobile-menu { transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease; }
+        .input-error { border-color: #ef4444; }
+        .error-message { color: #f87171; font-size: 0.875rem; margin-top: 0.5rem; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+
+    <header id="main-header" class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50 relative">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-600"><a href="index.html">HenriqueTech</a></div>
+            <div class="flex items-center space-x-4">
+                <ul class="hidden md:flex items-center space-x-6">
+                    <li><a href="index.html" class="hover:text-blue-500">Início</a></li>
+                    <li><a href="servicos.html" class="hover:text-blue-500">Serviços</a></li>
+                    <li><a href="formulario.html" class="hover:text-blue-500 nav-link-active" aria-current="page">Formulário</a></li>
+                    <li><a href="sobrenos.html" class="hover:text-blue-500">Sobre Nós</a></li>
+                </ul>
+                <button id="dark-mode-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" aria-label="Alternar modo escuro">
+                    <svg id="sun-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="moon-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" aria-label="Abrir menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="mobile-menu absolute w-full md:hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700 transform -translate-y-full opacity-0 pointer-events-none">
+            <ul class="flex flex-col items-center p-4 space-y-4">
+                <li><a href="index.html" class="hover:text-blue-500">Início</a></li>
+                <li><a href="servicos.html" class="hover:text-blue-500">Serviços</a></li>
+                <li><a href="formulario.html" class="hover:text-blue-500 nav-link-active" aria-current="page">Formulário</a></li>
+                <li><a href="sobrenos.html" class="hover:text-blue-500">Sobre Nós</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16">
+        <h1 class="text-4xl font-bold mb-4 text-center">Entre em Contato</h1>
+        <p class="text-center text-lg text-gray-600 dark:text-gray-400 mb-12">Preencha o formulário abaixo para solicitar um orçamento ou tirar suas dúvidas.</p>
+        
+        <div class="max-w-2xl mx-auto bg-blue-600 dark:bg-gray-800 p-8 rounded-lg shadow-lg border-2 border-gray-300 dark:border-gray-700">
+            <form id="contact-form" novalidate>
+                <legend class="text-2xl font-semibold text-white mb-6 text-center">Formulário de Contato</legend>
+                <fieldset>
+                    <legend class="text-2xl font-semibold mb-6 text-white dark:text-gray-300">Seus Dados</legend>
+                    <div class="mb-6">
+                        <label for="name" class="block text-white dark:text-gray-300 font-medium mb-2">Nome Completo</label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 bg-blue-100 dark:bg-gray-700 text-gray-800 dark:text-white" placeholder="Seu nome aqui...">
+                        <p id="name-error" class="error-message hidden">Por favor, insira seu nome completo.</p>
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-white dark:text-gray-300 font-medium mb-2">E-mail</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 bg-blue-100 dark:bg-gray-700 text-gray-800 dark:text-white" placeholder="seu.email@exemplo.com">
+                        <p id="email-error" class="error-message hidden">Por favor, insira um e-mail válido.</p>
+                    </div>
+                </fieldset>
+
+                <fieldset class="mt-8">
+                    <legend class="text-2xl font-semibold mb-6 text-white dark:text-gray-300">Detalhes do Projeto</legend>
+                    <div class="mb-6">
+                        <label for="service" class="block text-white dark:text-gray-300 font-medium mb-2">Tipo de Serviço</label>
+                        <select id="service" name="service" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 bg-blue-100 dark:bg-gray-700 text-gray-800 dark:text-white">
+                            <option value="">Selecione um serviço...</option>
+                            <option value="desenvolvimento-web">Desenvolvimento Web</option>
+                            <option value="seo">Otimização SEO</option>
+                            <option value="manutencao">Manutenção de Site</option>
+                        </select>
+                         <p id="service-error" class="error-message hidden">Por favor, selecione um serviço.</p>
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-white dark:text-gray-300 font-medium mb-2">Mensagem</label>
+                        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 bg-blue-100 dark:bg-gray-700 text-gray-800 dark:text-white" placeholder="Descreva seu projeto ou sua dúvida..."></textarea>
+                        <p id="message-error" class="error-message hidden">Por favor, escreva sua mensagem.</p>
+                    </div>
+                </fieldset>
+
+                <div class="mt-8 text-center">
+                    <button type="submit" class="w-full sm:w-auto bg-white text-blue-600 font-bold py-3 px-12 rounded-full hover:bg-gray-200 transition duration-300 transform hover:scale-105 border-2 border-transparent">Enviar Mensagem</button>
+                </div>
+            </form>
+             <div id="success-message" class="hidden mt-6 p-4 text-center bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-600 text-green-800 dark:text-green-200 rounded-md">
+                <p>Obrigado pelo seu contato! Sua mensagem foi enviada com sucesso.</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="bg-gray-800 text-white py-8 dark:bg-black mt-16">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 HenriqueTech. Todos os direitos reservados.</p>
+            <p style="color: #9ca3af;">Feito para o trabalho de Desenvolvimento Web Básico.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('-translate-y-full');
+            mobileMenu.classList.toggle('opacity-0');
+            mobileMenu.classList.toggle('pointer-events-none');
+        });
+
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        function updateThemeIcons() {
+            if (document.documentElement.classList.contains('dark')) {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            } else {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            }
+        }
+        darkModeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+            updateThemeIcons();
+        });
+        updateThemeIcons();
+        
+        const form = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+
+        const fields = {
+            name: { input: document.getElementById('name'), error: document.getElementById('name-error'), validate: (value) => value.trim() !== '' },
+            email: { input: document.getElementById('email'), error: document.getElementById('email-error'), validate: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) },
+            service: { input: document.getElementById('service'), error: document.getElementById('service-error'), validate: (value) => value !== '' },
+            message: { input: document.getElementById('message'), error: document.getElementById('message-error'), validate: (value) => value.trim() !== '' }
+        };
+
+        const validateField = (fieldName) => {
+            const field = fields[fieldName];
+            const isValid = field.validate(field.input.value);
+            if (!isValid) {
+                field.input.classList.add('input-error');
+                field.error.classList.remove('hidden');
+            } else {
+                field.input.classList.remove('input-error');
+                field.error.classList.add('hidden');
+            }
+            return isValid;
+        };
+        
+        Object.keys(fields).forEach(fieldName => {
+            fields[fieldName].input.addEventListener('input', () => validateField(fieldName));
+        });
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            let isFormValid = true;
+            Object.keys(fields).forEach(fieldName => {
+                if (!validateField(fieldName)) {
+                    isFormValid = false;
+                }
+            });
+
+            if (isFormValid) {
+                form.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
+

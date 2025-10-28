@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HenriqueTech - Início</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-link-active {
+            color: #3b82f6; 
+            font-weight: 600;
+        }
+        .dark .nav-link-active {
+            color: #60a5fa;
+        }
+
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease;
+        }
+
+        .carousel-item {
+            display: none;
+        }
+        .carousel-item.active {
+            display: block;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+        .carousel-dot:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .carousel-dot.active {
+            background-color: #ffffff;
+            border: 2px solid rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+
+    <header id="main-header" class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50 relative">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-600">
+                <a href="index.html">HenriqueTech</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <ul class="hidden md:flex items-center space-x-6">
+                    <li><a href="index.html" class="hover:text-blue-500 nav-link-active" aria-current="page">Início</a></li>
+                    <li><a href="servicos.html" class="hover:text-blue-500">Serviços</a></li>
+                    <li><a href="formulario.html" class="hover:text-blue-500">Formulário</a></li>
+                    <li><a href="sobrenos.html" class="hover:text-blue-500">Sobre Nós</a></li>
+                </ul>
+
+                <button id="dark-mode-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" aria-label="Alternar modo escuro">
+                    <svg id="sun-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="moon-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" aria-label="Abrir menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="mobile-menu absolute w-full md:hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700 transform -translate-y-full opacity-0 pointer-events-none">
+            <ul class="flex flex-col items-center p-4 space-y-4">
+                <li><a href="index.html" class="hover:text-blue-500 nav-link-active" aria-current="page">Início</a></li>
+                <li><a href="servicos.html" class="hover:text-blue-500">Serviços</a></li>
+                <li><a href="formulario.html" class="hover:text-blue-500">Formulário</a></li>
+                <li><a href="sobrenos.html" class="hover:text-blue-500">Sobre Nós</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="bg-blue-600 text-white text-center py-20">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Transformando Ideias em Realidade Digital</h1>
+                <p class="text-lg md:text-xl mb-8">Criamos soluções web inovadoras que impulsionam o seu negócio.</p>
+                <a href="servicos.html" class="inline-block bg-white text-blue-600 font-bold py-3 px-6 rounded-full transform transition duration-300 ease-in-out hover:bg-gray-200 hover:scale-105 dark:bg-gray-200 dark:hover:bg-gray-300">Ver Serviços</a>
+            </div>
+        </section>
+
+        <section id="services" class="py-10">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">O Que Oferecemos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <article class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md text-center flex flex-col justify-between">
+                        <div>
+                            <img src="https://placehold.co/100x100/3B82F6/FFFFFF?text=WEB" alt="Ícone representando desenvolvimento web." class="mx-auto mb-4 rounded-full">
+                            <h3 class="text-xl font-semibold mb-2">Desenvolvimento Web</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">Construímos sites rápidos, responsivos e otimizados para os motores de busca.</p>
+                        </div>
+                        <button class="modal-trigger mt-4 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300 font-semibold py-2 px-4 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900 transition"
+                                data-modal-title="Nosso Foco em Desenvolvimento"
+                                data-modal-content="Acreditamos que um bom desenvolvimento vai além do código. Envolve arquitetura sólida, performance otimizada e uma base escalável para o futuro. Utilizamos as tecnologias mais modernas para garantir que seu site ou aplicação seja não apenas funcional, mas também um pilar para o crescimento do seu negócio.">
+                            Saber Mais
+                        </button>
+                    </article>
+                    <article class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md text-center flex flex-col justify-between">
+                        <div>
+                            <img src="https://placehold.co/100x100/3B82F6/FFFFFF?text=UI/UX" alt="Ícone representando design de interface." class="mx-auto mb-4 rounded-full">
+                            <h3 class="text-xl font-semibold mb-2">Design UI/UX</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">Focamos na experiência do usuário para criar interfaces intuitivas e agradáveis.</p>
+                        </div>
+                         <button class="modal-trigger mt-4 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300 font-semibold py-2 px-4 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900 transition"
+                                data-modal-title="Design UI/UX Centrado no Usuário"
+                                data-modal-content="Nossa abordagem de design UI/UX coloca o usuário no centro de tudo. Criamos jornadas de usuário claras e interfaces visualmente atraentes que não apenas parecem boas, mas também são fáceis e prazerosas de usar, aumentando o engajamento e a conversão.">
+                            Saber Mais
+                        </button>
+                    </article>
+                    <article class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md text-center flex flex-col justify-between">
+                        <div>
+                            <img src="https://placehold.co/100x100/3B82F6/FFFFFF?text=SEO" alt="Ícone representando otimização de busca." class="mx-auto mb-4 rounded-full">
+                            <h3 class="text-xl font-semibold mb-2">Otimização SEO</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">Aumentamos sua visibilidade online e atraímos mais clientes qualificados.</p>
+                        </div>
+                         <button class="modal-trigger mt-4 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300 font-semibold py-2 px-4 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900 transition"
+                                data-modal-title="Estratégias de Otimização SEO"
+                                data-modal-content="Com nossas estratégias de SEO, seu site alcançará as primeiras posições nos mecanismos de busca. Analisamos palavras-chave, otimizamos o conteúdo e melhoramos a estrutura técnica do seu site para atrair tráfego orgânico e qualificado.">
+                            Saber Mais
+                        </button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio-carousel" class="py-10 bg-gray-100 dark:bg-black/50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">Nosso Portfólio</h2>
+                <div class="relative max-w-3xl mx-auto">
+                    <div id="carousel-container">
+                        <div class="carousel-item active"><img src="https://placehold.co/800x400/3B82F6/FFFFFF?text=img1.jpg" alt="Imagem 1 do portfólio" class="rounded-lg shadow-lg w-full"></div>
+                        <div class="carousel-item"><img src="https://placehold.co/800x400/10B981/FFFFFF?text=img2.jpg" alt="Imagem 2 do portfólio" class="rounded-lg shadow-lg w-full"></div>
+                        <div class="carousel-item"><img src="https://placehold.co/800x400/F59E0B/FFFFFF?text=img3.jpg" alt="Imagem 3 do portfólio" class="rounded-lg shadow-lg w-full"></div>
+                    </div>
+                    <button id="prev-btn" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white dark:bg-gray-700 bg-opacity-70 p-2 rounded-full shadow-md hover:bg-opacity-100 transition" aria-label="Imagem anterior">&#10094;</button>
+                    <button id="next-btn" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white dark:bg-gray-700 bg-opacity-70 p-2 rounded-full shadow-md hover:bg-opacity-100 transition" aria-label="Próxima imagem">&#10095;</button>
+                    
+                    <div id="carousel-dots-container" class="absolute bottom-5 left-1/2 -translate-x-1/2 flex space-x-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="py-10">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">Nosso Processo de Trabalho</h2>
+                <div class="flex flex-col md:flex-row justify-between text-center gap-8">
+                    <div class="modal-trigger flex-1 bg-blue-100 dark:bg-blue-900/50 p-6 rounded-lg shadow-md cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hover:bg-blue-200 dark:hover:bg-blue-900"
+                         data-modal-title="Passo 1: Briefing e Descoberta"
+                         data-modal-content="Nesta fase inicial, mergulhamos no seu negócio. Realizamos reuniões para entender seus objetivos, público-alvo e desafios. O resultado é um documento claro que guia todo o projeto.">
+                        <div class="bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-300 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-2xl">1</div>
+                        <h3 class="text-xl font-semibold mb-2">Briefing</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Entendemos suas metas e necessidades para definir o escopo do projeto.</p>
+                    </div>
+                    <div class="modal-trigger flex-1 bg-blue-100 dark:bg-blue-900/50 p-6 rounded-lg shadow-md cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hover:bg-blue-200 dark:hover:bg-blue-900"
+                         data-modal-title="Passo 2: Design e Protótipo"
+                         data-modal-content="Com o escopo definido, nossa equipe de design cria wireframes e protótipos interativos. Focamos na usabilidade e na experiência do usuário (UI/UX) para garantir uma interface intuitiva e visualmente atraente.">
+                        <div class="bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-300 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-2xl">2</div>
+                        <h3 class="text-xl font-semibold mb-2">Design e Protótipo</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Criamos o design visual e a experiência do usuário, validando com protótipos.</p>
+                    </div>
+                    <div class="modal-trigger flex-1 bg-blue-100 dark:bg-blue-900/50 p-6 rounded-lg shadow-md cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hover:bg-blue-200 dark:hover:bg-blue-900"
+                         data-modal-title="Passo 3: Desenvolvimento"
+                         data-modal-content="É aqui que a mágica acontece. Nossos desenvolvedores transformam o design em um produto funcional, utilizando as melhores tecnologias e práticas de codificação para garantir performance, segurança e escalabilidade.">
+                        <div class="bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-300 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-2xl">3</div>
+                        <h3 class="text-xl font-semibold mb-2">Desenvolvimento</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Codificamos a solução com as melhores tecnologias e práticas do mercado.</p>
+                    </div>
+                    <div class="modal-trigger flex-1 bg-blue-100 dark:bg-blue-900/50 p-6 rounded-lg shadow-md cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hover:bg-blue-200 dark:hover:bg-blue-900"
+                         data-modal-title="Passo 4: Lançamento e Suporte"
+                         data-modal-content="Após testes rigorosos, preparamos tudo para o lançamento. Fazemos a implantação em seu servidor e oferecemos suporte contínuo para garantir que seu site ou aplicação continue funcionando perfeitamente.">
+                        <div class="bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-300 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-2xl">4</div>
+                        <h3 class="text-xl font-semibold mb-2">Lançamento</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Realizamos a entrega final e o lançamento do seu projeto para o mundo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="text-center py-10">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-4">Pronto para Começar seu Projeto?</h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-8">Vamos conversar sobre como podemos ajudar a levar sua ideia para o próximo nível.</p>
+                <a href="formulario.html" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105 inline-block">Entre em Contato</a>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-gray-800 text-white py-8 dark:bg-black">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 HenriqueTech. Todos os direitos reservados.</p>
+            <p style="color: #9ca3af;">Feito para o trabalho de Desenvolvimento Web Básico.</p>
+        </div>
+    </footer>
+
+    <aside id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 max-w-md w-full m-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modal-title" class="text-2xl font-bold">Título do Modal</h3>
+                <button id="close-modal-button" class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white text-3xl leading-none" aria-label="Fechar modal">&times;</button>
+            </div>
+            <p id="modal-content" class="mb-6 text-gray-600 dark:text-gray-400">Conteúdo do modal aparecerá aqui.</p>
+            <div class="flex justify-center">
+                <a href="servicos.html" class="bg-blue-600 text-white font-semibold py-2 px-5 rounded-lg hover:bg-blue-700 transition duration-300">
+                    Ver Serviços
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            const isClosed = mobileMenu.classList.contains('-translate-y-full');
+            mobileMenu.classList.toggle('-translate-y-full', !isClosed);
+            mobileMenu.classList.toggle('opacity-0', !isClosed);
+            mobileMenu.classList.toggle('pointer-events-none', !isClosed);
+        });
+
+        const modal = document.getElementById('modal');
+        const closeModalButton = document.getElementById('close-modal-button');
+        const modalTriggers = document.querySelectorAll('.modal-trigger');
+        const modalTitleElement = document.getElementById('modal-title');
+        const modalContentElement = document.getElementById('modal-content');
+
+        modalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const title = trigger.dataset.modalTitle;
+                const content = trigger.dataset.modalContent;
+                
+                modalTitleElement.textContent = title;
+                modalContentElement.textContent = content;
+
+                modal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+            });
+        });
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        closeModalButton.addEventListener('click', closeModal);
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const dotsContainer = document.getElementById('carousel-dots-container');
+        let currentSlide = 0;
+
+        if(carouselItems.length > 0) {
+            carouselItems.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                dot.setAttribute('aria-label', `Ir para imagem ${index + 1}`);
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    showSlide(currentSlide);
+                });
+                dotsContainer.appendChild(dot);
+            });
+    
+            const carouselDots = document.querySelectorAll('.carousel-dot');
+    
+            function showSlide(index) {
+                carouselItems.forEach(item => item.classList.remove('active'));
+                carouselItems[index].classList.add('active');
+                carouselDots.forEach(dot => dot.classList.remove('active'));
+                carouselDots[index].classList.add('active');
+            }
+    
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % carouselItems.length;
+                showSlide(currentSlide);
+            });
+    
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + carouselItems.length) % carouselItems.length;
+                showSlide(currentSlide);
+            });
+    
+            showSlide(currentSlide);
+        }
+
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+
+        function updateThemeIcons() {
+            if (document.documentElement.classList.contains('dark')) {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            } else {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            }
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+            updateThemeIcons();
+        });
+
+        updateThemeIcons();
+    </script>
+</body>
+</html>
+

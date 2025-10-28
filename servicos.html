@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HenriqueTech - Serviços</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+        .nav-link-active { color: #3b82f6; font-weight: 600; }
+        .dark .nav-link-active { color: #60a5fa; }
+        .mobile-menu { transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease; }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+        .accordion-header svg {
+            transition: transform 0.3s ease-in-out;
+        }
+        .accordion-item.active .accordion-header svg {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+
+    <header id="main-header" class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50 relative">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-600"><a href="index.html">HenriqueTech</a></div>
+            <div class="flex items-center space-x-4">
+                <ul class="hidden md:flex items-center space-x-6">
+                    <li><a href="index.html" class="hover:text-blue-500">Início</a></li>
+                    <li><a href="servicos.html" class="hover:text-blue-500 nav-link-active" aria-current="page">Serviços</a></li>
+                    <li><a href="formulario.html" class="hover:text-blue-500">Formulário</a></li>
+                    <li><a href="sobrenos.html" class="hover:text-blue-500">Sobre Nós</a></li>
+                </ul>
+                <button id="dark-mode-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" aria-label="Alternar modo escuro">
+                    <svg id="sun-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="moon-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" aria-label="Abrir menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="mobile-menu absolute w-full md:hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700 transform -translate-y-full opacity-0 pointer-events-none">
+            <ul class="flex flex-col items-center p-4 space-y-4">
+                <li><a href="index.html" class="hover:text-blue-500">Início</a></li>
+                <li><a href="servicos.html" class="hover:text-blue-500 nav-link-active" aria-current="page">Serviços</a></li>
+                <li><a href="formulario.html" class="hover:text-blue-500">Formulário</a></li>
+                <li><a href="sobrenos.html" class="hover:text-blue-500">Sobre Nós</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16">
+        <h1 class="text-4xl font-bold mb-4 text-center">Nossos Planos e Dúvidas Frequentes</h1>
+        <p class="text-center text-lg text-gray-600 dark:text-gray-400 mb-8">Tire suas dúvidas e veja qual plano se encaixa melhor para você.</p>
+        <div class="text-center mb-16">
+            <a href="formulario.html" class="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300 transform hover:scale-105">Entre em Contato</a>
+        </div>
+        
+        <section id="pricing-table" class="mb-16">
+            <div class="overflow-x-auto bg-blue-100 dark:bg-gray-800 rounded-lg shadow-lg border-2 border-gray-300 dark:border-gray-700">
+                <table class="w-full text-left">
+                    <caption class="text-lg p-4 text-gray-600 dark:text-gray-400">Comparativo de funcionalidades dos nossos planos de serviço.</caption>
+                    <thead class="bg-gray-100 dark:bg-gray-700">
+                        <tr>
+                            <th scope="col" class="p-4 font-semibold">Funcionalidade</th>
+                            <th scope="col" class="p-4 font-semibold text-center">Básico</th>
+                            <th scope="col" class="p-4 font-semibold text-center">Profissional</th>
+                            <th scope="col" class="p-4 font-semibold text-center">Corporativo</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-blue-300 dark:divide-gray-600">
+                        <tr>
+                            <td class="p-4">Desenvolvimento de Site Responsivo</td>
+                            <td class="p-4 text-center text-green-500 font-bold">✓</td>
+                            <td class="p-4 text-center text-green-500 font-bold">✓</td>
+                            <td class="p-4 text-center text-green-500 font-bold">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4">Otimização SEO Básica</td>
+                            <td class="p-4 text-center text-green-500 font-bold">✓</td>
+                            <td class="p-4 text-center text-green-500 font-bold">✓</td>
+                            <td class="p-4 text-center text-green-500 font-bold">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4">Suporte por E-mail</td>
+                            <td class="p-4 text-center text-green-500 font-bold">✓</td>
+                            <td class="p-4 text-center text-green-500 font-bold">✓</td>
+                            <td class="p-4 text-center text-green-500 font-bold">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4">Integração com Redes Sociais</td>
+                            <td class="p-4 text-center text-red-500 font-bold">✗</td>
+                            <td class="p-4 text-center text-green-500 font-bold">✓</td>
+                            <td class="p-4 text-center text-green-500 font-bold">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4">Relatórios Mensais de Desempenho</td>
+                            <td class="p-4 text-center text-red-500 font-bold">✗</td>
+                            <td class="p-4 text-center text-green-500 font-bold">✓</td>
+                            <td class="p-4 text-center text-green-500 font-bold">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4">Suporte Prioritário 24/7</td>
+                            <td class="p-4 text-center text-red-500 font-bold">✗</td>
+                            <td class="p-4 text-center text-red-500 font-bold">✗</td>
+                            <td class="p-4 text-center text-green-500 font-bold">✓</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="faq">
+            <h2 class="text-3xl font-bold text-center mb-8">Perguntas Frequentes (FAQ)</h2>
+            <div id="faq-accordion" class="max-w-3xl mx-auto space-y-4">
+                <div class="accordion-item rounded-lg shadow-md overflow-hidden">
+                    <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-colors">
+                        <span>Qual o prazo de entrega de um site?</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content bg-white dark:bg-gray-800">
+                        <p class="p-4 text-gray-600 dark:text-gray-400">O prazo varia conforme a complexidade do projeto. Um site institucional básico pode levar de 2 a 4 semanas, enquanto projetos mais complexos com funcionalidades específicas podem levar mais tempo. A fase de briefing é crucial para definirmos um cronograma preciso.</p>
+                    </div>
+                </div>
+                <div class="accordion-item rounded-lg shadow-md overflow-hidden">
+                    <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-colors">
+                        <span>Vocês oferecem manutenção após o lançamento?</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content bg-white dark:bg-gray-800">
+                        <p class="p-4 text-gray-600 dark:text-gray-400">Sim! Oferecemos planos de manutenção e suporte contínuo para garantir que seu site permaneça seguro, atualizado e funcionando perfeitamente. Isso inclui atualizações de segurança, backups e pequenas alterações de conteúdo.</p>
+                    </div>
+                </div>
+                <div class="accordion-item rounded-lg shadow-md overflow-hidden">
+                    <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-colors">
+                        <span>O que é SEO e por que é importante?</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content bg-white dark:bg-gray-800">
+                        <p class="p-4 text-gray-600 dark:text-gray-400">SEO (Search Engine Optimization) é um conjunto de técnicas para otimizar seu site e aumentar sua visibilidade em mecanismos de busca como o Google. É fundamental para atrair tráfego orgânico (não pago) e clientes qualificados que estão procurando ativamente por seus produtos ou serviços.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="formulario.html" class="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300 transform hover:scale-105">Ainda tem dúvidas? Fale conosco!</a>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-gray-800 text-white py-8 dark:bg-black mt-16">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 HenriqueTech. Todos os direitos reservados.</p>
+            <p style="color: #9ca3af;">Feito para o trabalho de Desenvolvimento Web Básico.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('-translate-y-full');
+            mobileMenu.classList.toggle('opacity-0');
+            mobileMenu.classList.toggle('pointer-events-none');
+        });
+
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        function updateThemeIcons() {
+            if (document.documentElement.classList.contains('dark')) {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            } else {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            }
+        }
+        darkModeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+            updateThemeIcons();
+        });
+        updateThemeIcons();
+
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            const content = item.querySelector('.accordion-content');
+            header.addEventListener('click', () => {
+                accordionItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.accordion-content').style.maxHeight = '0px';
+                    }
+                });
+                
+                item.classList.toggle('active');
+                if (item.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = '0px';
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
+
